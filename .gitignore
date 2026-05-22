@@ -33,8 +33,7 @@ dist/
 *.egg-info/
 
 # ML training outputs and experiment artifacts
-runs/
-*.pt
+
 *.pth
 *.onnx
 *.engine

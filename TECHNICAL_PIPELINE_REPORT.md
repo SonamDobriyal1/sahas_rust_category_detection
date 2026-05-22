@@ -319,6 +319,10 @@ First, YOLO11s is a larger and newer model than YOLOv8n. The YOLOv8 run used the
 
 Second, YOLO11 was trained at a larger image size: 768 instead of 640. Rust regions can contain fine texture, irregular boundaries, and small color/edge differences. Increasing input resolution preserves more detail, which can improve both classification and rotated-box localization.
 
+For research-paper reporting, this should be described as a deliberate training-configuration difference rather than only an architectural change. The YOLOv8n-OBB experiment used an input resolution of 640 x 640, while the YOLO11s-OBB experiment used 768 x 768. The higher YOLO11 input size was selected to retain more fine-grained corrosion texture and boundary information after resizing, since rust severity can depend on subtle visual cues such as surface roughness, color spread, edge irregularity, and localized corrosion density. This is also important for OBB detection because small changes in corner placement and box angle can affect IoU-based metrics, especially mAP50-95.
+
+When incorporating this into a paper, the comparison should be framed as a comparison between the complete YOLOv8n-OBB and YOLO11s-OBB training configurations, not as a perfectly isolated architecture-only ablation. The YOLO11 improvement may be due to the newer/larger architecture, the higher input resolution, cosine learning-rate scheduling, or the combination of these factors.
+
 Third, YOLO11 used cosine learning-rate scheduling (`cos_lr: true`) while YOLOv8 did not. Cosine scheduling usually gives smoother late-stage optimization. This can help the model settle into a better validation optimum, especially for detection tasks where localization and classification losses must be balanced.
 
 Fourth, YOLO11 used more workers in the recorded config: 8 versus 4. This mainly affects data loading throughput, not final accuracy directly, but smoother input loading can make longer training more practical.
