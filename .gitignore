@@ -1,0 +1,73 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Environment and local config
+.env
+.env.*
+!.env.example
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+Desktop.ini
+
+# Python packaging/build artifacts
+build/
+dist/
+*.egg-info/
+
+# ML training outputs and experiment artifacts
+runs/
+*.pt
+*.pth
+*.onnx
+*.engine
+*.openvino/
+*.torchscript
+
+# Ultralytics / dataset caches
+*.cache
+labels.cache
+
+# Dataset images and YOLO label annotations
+data/**/images/
+data/**/labels/
+data/**/*.jpg
+data/**/*.jpeg
+data/**/*.png
+data/**/*.bmp
+data/**/*.webp
+data/**/*.txt
+!data/README.roboflow.txt
+
+# Web app generated files
+web_app/static/uploads/
+web_app/static/results/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Large/raw archives
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar

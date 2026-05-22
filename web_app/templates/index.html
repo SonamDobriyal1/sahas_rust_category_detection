@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Corrosion Severity Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel">
+        <div class="toolbar">
+          <div>
+            <p class="eyebrow">YOLOv8 OBB</p>
+            <h1>Corrosion Severity Detector</h1>
+          </div>
+          <span class="status">Weights: {{ weights_path }}</span>
+        </div>
+
+        <form id="predict-form" class="uploader">
+          <label class="drop-zone" for="image">
+            <input id="image" name="image" type="file" accept="image/*" required>
+            <span class="drop-title">Select an image</span>
+            <span class="drop-subtitle">JPG, PNG, BMP, or WEBP</span>
+          </label>
+
+          <div class="controls">
+            <label for="confidence">Confidence</label>
+            <input id="confidence" name="confidence" type="range" min="0.05" max="0.9" step="0.05" value="0.25">
+            <output id="confidence-value">0.25</output>
+            <button type="submit">Analyze</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="workspace">
+        <div class="result-summary">
+          <p class="label">Overall Severity</p>
+          <h2 id="overall">Waiting for image</h2>
+          <p id="meta">Upload a corrosion image to run detection.</p>
+          <div class="counts">
+            <div><span id="mild-count">0</span><small>Mild</small></div>
+            <div><span id="moderate-count">0</span><small>Moderate</small></div>
+            <div><span id="severe-count">0</span><small>Severe</small></div>
+          </div>
+        </div>
+
+        <div class="image-stage">
+          <img id="result-image" alt="">
+        </div>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
