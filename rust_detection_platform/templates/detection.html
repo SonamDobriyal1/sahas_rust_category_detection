@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Detection | Rust Category Detection{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+  <div>
+    <p class="eyebrow">Live inference</p>
+    <h1>Detection</h1>
+  </div>
+  <span class="model-badge">{{ weights_name }}</span>
+</section>
+
+<section class="detector-layout">
+  <form id="predict-form" class="upload-panel">
+    <label class="drop-zone" for="image">
+      <input id="image" name="image" type="file" accept="image/*" required>
+      <span class="drop-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" role="img"><path d="M12 3 7 8h3v6h4V8h3l-5-5Zm-8 14h16v3H4v-3Z"/></svg>
+      </span>
+      <span id="file-label" class="drop-title">Choose inspection image</span>
+      <span class="drop-subtitle">JPG, PNG, BMP, WEBP</span>
+    </label>
+
+    <div class="control-row">
+      <label for="confidence">Confidence</label>
+      <output id="confidence-value">0.25</output>
+    </div>
+    <input id="confidence" name="confidence" class="range" type="range" min="0.05" max="0.9" step="0.05" value="0.25">
+
+    <button class="button primary full" type="submit">
+      <span class="button-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" role="img"><path d="m10 17 5-5-5-5v10Z"/></svg>
+      </span>
+      Analyze Image
+    </button>
+  </form>
+
+  <section class="result-panel" aria-live="polite">
+    <div class="result-head">
+      <p class="eyebrow">Result</p>
+      <h2 id="overall">Waiting for image</h2>
+      <p id="recommendation">Upload an image to view the rust category.</p>
+    </div>
+
+    <div class="summary-strip">
+      <div>
+        <span id="total-count">0</span>
+        <small>Detections</small>
+      </div>
+      <div>
+        <span id="max-confidence">0.00</span>
+        <small>Max confidence</small>
+      </div>
+    </div>
+
+    <div class="category-list" aria-label="Category counts">
+      <div><span class="swatch mild"></span><strong id="mild-count">0</strong><small>Mild</small></div>
+      <div><span class="swatch moderate"></span><strong id="moderate-count">0</strong><small>Moderate</small></div>
+      <div><span class="swatch severe"></span><strong id="severe-count">0</strong><small>Severe</small></div>
+    </div>
+  </section>
+
+  <section class="image-panel">
+    <div id="empty-state" class="empty-state">Annotated output will appear here.</div>
+    <img id="result-image" alt="Annotated rust detection result">
+  </section>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/detection.js') }}"></script>
+{% endblock %}

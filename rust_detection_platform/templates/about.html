@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}About | Rust Category Detection{% endblock %}
+
+{% block content %}
+<section class="page-heading about-heading">
+  <div>
+    <p class="eyebrow">Why detection is needed</p>
+    <h1>Rust risk grows quietly before it becomes visible damage.</h1>
+  </div>
+</section>
+
+<section class="about-layout">
+  <article class="about-copy">
+    <h2>Earlier classification supports safer maintenance</h2>
+    <p>Rust weakens metal surfaces, shortens component life, and can become expensive when inspections depend only on manual review. Category detection gives teams a repeatable way to screen images and prioritize action.</p>
+    <p>Separating mild, moderate, and severe corrosion helps turn raw inspection photos into maintenance decisions. Mild findings can be monitored, moderate findings can be scheduled for repair, and severe findings can be escalated immediately.</p>
+  </article>
+
+  <div class="training-visual">
+    <img src="{{ url_for('static', filename='samples/training-results.png') }}" alt="YOLO11 training results chart">
+  </div>
+</section>
+
+<section class="reason-band">
+  <div>
+    <h3>Safety</h3>
+    <p>Severe corrosion can reduce strength in vehicles, structures, pipelines, machinery, and storage assets.</p>
+  </div>
+  <div>
+    <h3>Cost control</h3>
+    <p>Early treatment is usually cheaper than replacement, downtime, or emergency repair after failure.</p>
+  </div>
+  <div>
+    <h3>Consistency</h3>
+    <p>A model-assisted workflow reduces variation between reviewers and keeps image evidence easy to compare.</p>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Rust Category Detection Platform{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Computer vision inspection</p>
+    <h1>Rust Category Detection</h1>
+    <p class="lead">Classify visible corrosion into mild, moderate, and severe categories using the deployed YOLO11 oriented bounding box model.</p>
+    <div class="hero-actions">
+      <a class="button primary" href="{{ url_for('detection') }}">Open Detector</a>
+      <a class="button secondary" href="{{ url_for('about') }}">Why It Matters</a>
+    </div>
+  </div>
+  <div class="hero-visual" aria-label="Model prediction preview">
+    <img src="{{ url_for('static', filename='samples/inspection-example.jpg') }}" alt="Rust corrosion detection example">
+  </div>
+</section>
+
+<section class="metrics-band" aria-label="Platform capabilities">
+  <div>
+    <strong>YOLO11</strong>
+    <span>OBB model weights deployed locally</span>
+  </div>
+  <div>
+    <strong>3 classes</strong>
+    <span>Mild, moderate, and severe corrosion</span>
+  </div>
+  <div>
+    <strong>Fast review</strong>
+    <span>Annotated image output after upload</span>
+  </div>
+</section>
+
+<section class="content-grid">
+  <article class="info-panel">
+    <h2>Designed for inspection teams</h2>
+    <p>The platform gives a clean upload workflow, category summary, confidence score, and annotated image so teams can triage corrosion evidence quickly.</p>
+  </article>
+  <article class="info-panel accent">
+    <h2>Practical severity output</h2>
+    <p>The strongest detected category is surfaced as the overall result while counts remain visible for every corrosion level.</p>
+  </article>
+</section>
+{% endblock %}
